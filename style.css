@@ -3,8 +3,8 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #e3f2fd, #bbdefb);
-    color: # 00BFFF;
+    background: linear-gradient(to right, # 00BFFF, # 00BFFF);
+    color: #00BFFF;
     text-align: center;
 }
 
