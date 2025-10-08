@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
   <!-- Cabeçalho -->
   <header>
     <h2>Como Evoluir no Clash Royale</h2>
@@ -21,34 +22,48 @@
 
   <!-- Conteúdo principal -->
   <main>
-    <h1>Melhores Decks (Metas) para 2025</h1>
-    <p>Descubra os decks mais usados e fortes do Clash Royale em 2025.</p>
+    <section class="intro">
+      <h1>Melhores Decks (Metas) para 2025</h1>
+      <p>Encontre os decks mais usados e dominantes do Clash Royale neste ano. Veja quais estratégias estão no topo das arenas!</p>
+    </section>
 
-    <!-- Galeria de decks -->
-    <div class="metas">
-      <div class="deck">
-        <img src="https://staticg.sportskeeda.com/editor/2024/05/41b29-17171407590864-1920.jpg" alt="Deck 1 - Mega Cavaleiro e Arqueiras">
+    <!-- Galeria de imagens -->
+    <section class="galeria">
+      <div class="deck fade-in">
+        <img src="https://staticg.sportskeeda.com/editor/2024/05/41b29-17171407590864-1920.jpg" alt="Deck 1 - Mega Cavaleiro">
         <h3>Deck 1 — Mega Cavaleiro + Arqueiras</h3>
-        <p>Excelente para defesa e contra-ataque. Controle o campo e finalize com pushes rápidos.</p>
+        <p>Forte contra decks terrestres e excelente no contra-ataque. Use feitiços para apoio.</p>
       </div>
 
-      <div class="deck">
+      <div class="deck fade-in">
         <img src="https://staticg.sportskeeda.com/editor/2024/05/6920d-17171408060985-1920.jpg" alt="Deck 2 - Golem e Relâmpago">
         <h3>Deck 2 — Golem + Relâmpago</h3>
-        <p>Um deck pesado e poderoso. Ideal para quem gosta de vencer com pushes lentos e fortes.</p>
+        <p>Deck pesado e poderoso. Use para dominar no late game com pushes lentos e fortes.</p>
       </div>
 
-      <div class="deck">
+      <div class="deck fade-in">
         <img src="https://staticg.sportskeeda.com/editor/2024/05/f7956-17171408702362-1920.jpg" alt="Deck 3 - Mineiro Controle">
         <h3>Deck 3 — Mineiro Controle</h3>
-        <p>Rápido e eficiente. Domine o ritmo do jogo com ataques constantes e defesa sólida.</p>
+        <p>Rápido, estratégico e difícil de ser punido. Ideal para jogadores experientes.</p>
       </div>
-    </div>
+    </section>
   </main>
 
   <!-- Rodapé -->
   <footer>
     <p>&copy; 2025 João Pedro Mauda</p>
   </footer>
+
+  <script>
+    // Animação de entrada suave
+    const decks = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+
+    decks.forEach(deck => observer.observe(deck));
+  </script>
 </body>
 </html>
