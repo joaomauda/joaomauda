@@ -4,214 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Como Counterar Cada Carta ou Combo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     /* ---------- Estilo geral ---------- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      background: linear-gradient(to bottom, #0066ff, #ffffff, #ff3333);
+      background: linear-gradient(to bottom, #0066cc, #ffffff, #cc0000);
       color: #222;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
+    /* ---------- Cabeçalho ---------- */
     header {
-      background: rgba(0, 0, 128, 0.8);
+      background-color: #004aad;
       color: white;
       text-align: center;
-      padding: 1.5rem 0;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      animation: slideDown 1s ease;
+      padding: 1rem 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
     header h2 {
-      font-size: 2rem;
       margin-bottom: 0.5rem;
+      font-size: 1.8rem;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 1rem;
-      font-weight: 600;
+      font-weight: bold;
       transition: color 0.3s ease;
     }
 
     nav a:hover {
-      color: #ffcc00;
+      color: #ffd700;
     }
 
     /* ---------- Conteúdo ---------- */
     main {
       flex: 1;
-      text-align: center;
       padding: 2rem 1rem;
-      animation: fadeIn 1.5s ease;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     main h1 {
-      font-size: 2.2rem;
+      text-align: center;
       color: #003399;
       margin-bottom: 2rem;
+      font-size: 2rem;
     }
 
     .card {
       background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-      margin: 1.5rem auto;
-      max-width: 700px;
-      padding: 2rem;
-      text-align: left;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, rgba(0, 0, 255, 0.2), rgba(255, 255, 255, 0.2), rgba(255, 0, 0, 0.2));
-      transition: all 0.6s ease;
-    }
-
-    .card:hover::before {
-      left: 100%;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    }
-
-    .card h2 {
-      color: #0055cc;
-      margin-bottom: 1rem;
-      font-size: 1.6rem;
-    }
-
-    .card p {
-      font-weight: 600;
-      color: #444;
-      margin-bottom: 0.8rem;
-    }
-
-    .card ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-
-    .card li {
-      margin-bottom: 0.6rem;
-      line-height: 1.5;
-      color: #222;
-    }
-
-    /* ---------- Rodapé ---------- */
-    footer {
-      background: rgba(255, 0, 0, 0.9);
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      font-weight: 500;
-      box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    /* ---------- Animações ---------- */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideDown {
-      from {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header h2 {
-        font-size: 1.5rem;
-      }
-      .card {
-        padding: 1.2rem;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Cabeçalho -->
-  <header>
-    <h2>Como Counterar Cartas</h2>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="filiais.html">Defesas e Combos</a>
-      <a href="contato.html">Contato</a>
-    </nav>
-  </header>
-
-  <!-- Conteúdo principal -->
-  <main>
-    <h1>Como Counterar:</h1>
-
-    <section class="card">
-      <h2>Bandida-líder</h2>
-      <p><strong>Resumo prático:</strong></p>
-      <ul>
-        <li>Interrompa o dash com tropas baratas e rápidas.</li>
-        <li>Posicione tropas coladas nela — nunca de longe.</li>
-        <li>Use estruturas para puxá-la pro centro da arena.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>Curadora Guerreira + Golem de Elixir</h2>
-      <p><strong>Resumo prático:</strong></p>
-      <ul>
-        <li><b>Foque na Curadora:</b> ela mantém o Golem vivo — mate-a primeiro.</li>
-        <li><b>Use feitiços fortes:</b> Trovão, Veneno ou Bola de Fogo limpam o suporte.</li>
-        <li><b>Defenda com dano alto:</b> use P.E.K.K.A, Mini P.E.K.K.A ou Torre Inferno.</li>
-      </ul>
-    </section>
-
-    <section class="card">
-      <h2>X-Bow + Tesla</h2>
-      <p><strong>Resumo prático:</strong></p>
-      <ul>
-        <li><b>Use tanque no meio:</b> a X-Besta foca nele, não na torre.</li>
-        <li><b>Feitiços (Relâmpago, Fireball):</b> destroem X-Besta e Tesla juntas.</li>
-        <li><b>Ataque o outro lado:</b> pressione enquanto ele tenta proteger a defesa.</li>
-        <li><b>Não agrupe tropas:</b> evite dar valor pro Tesla e feitiços inimigos.</li>
-      </ul>
-    </section>
-  </main>
-
-  <!-- Rodapé -->
-  <footer>
-    <p>&copy; 2025 Clash Royale Fanbase</p>
-  </footer>
-</body>
-</html>
