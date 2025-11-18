@@ -114,15 +114,22 @@ carregarConteudo();
     localStorage.setItem("tema", ativo ? "tema-escuro" : "tema-claro");
   });
 </script>
-    // Animação de entrada suave
-    const decks = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
+    <script>
+  const toggle = document.getElementById("tema-toggle");
+  const body = document.body;
 
-    decks.forEach(deck => observer.observe(deck));
+  // Carregar tema salvo
+  let tema = localStorage.getItem("tema") || "tema-claro";
+  if (tema === "tema-escuro") body.classList.add("tema-escuro");
+
+  toggle.addEventListener("click", () => {
+    body.classList.toggle("tema-escuro");
+
+    const ativo = body.classList.contains("tema-escuro");
+    localStorage.setItem("tema", ativo ? "tema-escuro" : "tema-claro");
+  });
+</script>
+</script>
   </script>
 </body>
 </html>
