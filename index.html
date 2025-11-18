@@ -21,34 +21,61 @@
     </nav>
   </header>
 
-  <!-- Conteúdo principal -->
-  <main>
-    <section class="intro">
-      <h1>Melhores Decks (Metas) para 2025</h1>
-      <p>Encontre os decks mais usados e dominantes do Clash Royale neste ano. Veja quais estratégias estão no topo das arenas!</p>
-    </section>
+<main>
+  <h1>Bem-vindo à Locadora de Veículos</h1>
+  <p>Encontre o carro ideal para sua viagem, trabalho ou lazer.</p>
 
-    <!-- Galeria de imagens -->
-    <section class="galeria">
-      <div class="deck fade-in">
-        <img src="https://staticg.sportskeeda.com/editor/2024/05/41b29-17171407590864-1920.jpg" alt="Deck 1 - Mega Cavaleiro">
-        <h3>Deck 1 — Mega Cavaleiro + Arqueiras</h3>
-        <p>Forte contra decks terrestres e excelente no contra-ataque. Use feitiços para apoio.</p>
-      </div>
+  <div id="conteudo" class="conteudo-scroll">
+    <p>Carregando conteúdo...</p>
+  </div>
+</main>
 
-      <div class="deck fade-in">
-        <img src="https://staticg.sportskeeda.com/editor/2024/05/6920d-17171408060985-1920.jpg" alt="Deck 2 - Golem e Relâmpago">
-        <h3>Deck 2 — Golem + Relâmpago</h3>
-        <p>Deck pesado e poderoso. Use para dominar no late game com pushes lentos e fortes.</p>
-      </div>
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz8R_pWpwdh1VXPSmLMsVH9FwRUwtY8oUkvMvKHrtj9Aaf_dOkB5d3ibB22MRMg-ggL/exec"; // substitua pela URL do seu Apps Script
+async function carregarConteudo() {
+  const container = document.getElementById('conteudo');
+  container.innerHTML = "<p>Carregando conteúdo...</p>";
 
-      <div class="deck fade-in">
-        <img src="https://staticg.sportskeeda.com/editor/2024/05/f7956-17171408702362-1920.jpg" alt="Deck 3 - Mineiro Controle">
-        <h3>Deck 3 — Mineiro Controle</h3>
-        <p>Rápido, estratégico e difícil de ser punido. Ideal para jogadores experientes.</p>
-      </div>
-    </section>
-  </main>
+  try {
+    const res = await fetch(SCRIPT_URL);
+    const dados = await res.json();
+    container.innerHTML = '';
+
+    dados.forEach(item => {
+      const bloco = document.createElement('div');
+      bloco.className = 'bloco-item';
+
+      const titulo = document.createElement('h2');
+      titulo.textContent = item.Título || '';
+      bloco.appendChild(titulo);
+
+      const descricao = document.createElement('p');
+      descricao.textContent = item.Descrição || '';
+      bloco.appendChild(descricao);
+
+      if (item.Url && item.Url.startsWith('http')) {
+        if (item.Url.match(/\.(jpg|jpeg|png|gif|webp)$/i) || item.Url.includes('unsplash')) {
+          const img = document.createElement('img');
+          img.src = item.Url;
+          img.alt = item.Título || 'Imagem';
+          bloco.appendChild(img);
+        } else {
+          const link = document.createElement('a');
+          link.href = item.Url;
+          link.textContent = 'Ver mais';
+          bloco.appendChild(link);
+        }
+      }
+
+      container.appendChild(bloco);
+    });
+  } catch (err) {
+    container.innerHTML = "<p>Erro ao carregar dados: " + err.message + "</p>";
+  }
+}
+
+carregarConteudo();
+</script>
 
   <!-- Rodapé -->
   <footer>
