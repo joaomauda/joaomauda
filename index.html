@@ -17,10 +17,11 @@
       <a href="index.html" class="ativo">Início</a>
       <a href="filiais.html">Melhores Decks</a>
       <a href="contato.html">Contato</a>
-      <a href="planilha.html">Contato</a>
-
-      <!-- Botão Toggle -->
-      <button id="tema-toggle" class="tema-toggle" aria-label="Alternar tema"></button>
+       <a href="planilha.html">Contato</a>
+      <div>
+      <div id="tema-toggle" class="tema-toggle">
+  <div class="bolinha"></div>
+</div>
     </nav>
   </header>
 
@@ -34,7 +35,7 @@
 </main>
 
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWHxhv4ioE4mSn9kwmJrLV7SJPmq8ShYpprS8-8CwJ0KAIocCgrruX2QoFMa8OamUd2g/exec"; 
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWHxhv4ioE4mSn9kwmJrLV7SJPmq8ShYpprS8-8CwJ0KAIocCgrruX2QoFMa8OamUd2g/exec"; // substitua pela URL do seu Apps Script
 async function carregarConteudo() {
   const container = document.getElementById('conteudo');
   container.innerHTML = "<p>Carregando conteúdo...</p>";
@@ -57,30 +58,31 @@ async function carregarConteudo() {
       bloco.appendChild(descricao);
 
       if (item.Url && item.Url.startsWith('http')) {
-        const youtubeRegex = /(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/;
-        const match = item.Url.match(youtubeRegex);
-        if (match) {
-          const videoId = match[1];
-          const iframe = document.createElement('iframe');
-          iframe.src = `https://www.youtube.com/embed/${videoId}`;
-          iframe.height = "315";
-          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-          iframe.setAttribute("allowfullscreen", true);
-          bloco.appendChild(iframe);
-        }
-        else if (item.Url.match(/\.(jpg|jpeg|png|gif|webp)$/i) || item.Url.includes('unsplash')) {
-          const img = document.createElement('img');
-          img.src = item.Url;
-          img.alt = item.Título || 'Imagem';
-          bloco.appendChild(img);
-        }
-        else {
-          const link = document.createElement('a');
-          link.href = item.Url;
-          link.textContent = 'Ver mais';
-          bloco.appendChild(link);
-        }
-      }
+  const youtubeRegex = /(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/;
+
+  const match = item.Url.match(youtubeRegex);
+  if (match) {
+    const videoId = match[1];
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}`;
+    iframe.height = "315";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.setAttribute("allowfullscreen", true);
+    bloco.appendChild(iframe);
+  }
+  else if (item.Url.match(/\.(jpg|jpeg|png|gif|webp)$/i) || item.Url.includes('unsplash')) {
+    const img = document.createElement('img');
+    img.src = item.Url;
+    img.alt = item.Título || 'Imagem';
+    bloco.appendChild(img);
+  }
+  else {
+    const link = document.createElement('a');
+    link.href = item.Url;
+    link.textContent = 'Ver mais';
+    bloco.appendChild(link);
+  }
+}
 
       container.appendChild(bloco);
     });
@@ -98,6 +100,21 @@ carregarConteudo();
   </footer>
 
   <script>
+      const toggle = document.getElementById("tema-toggle");
+  const body = document.body;
+
+  // Carregar tema salvo
+  let tema = localStorage.getItem("tema") || "tema-claro";
+  if (tema === "tema-escuro") body.classList.add("tema-escuro");
+
+  toggle.addEventListener("click", () => {
+    body.classList.toggle("tema-escuro");
+
+    const ativo = body.classList.contains("tema-escuro");
+    localStorage.setItem("tema", ativo ? "tema-escuro" : "tema-claro");
+  });
+</script>
+    <script>
   const toggle = document.getElementById("tema-toggle");
   const body = document.body;
 
@@ -107,21 +124,10 @@ carregarConteudo();
 
   toggle.addEventListener("click", () => {
     body.classList.toggle("tema-escuro");
+
     const ativo = body.classList.contains("tema-escuro");
     localStorage.setItem("tema", ativo ? "tema-escuro" : "tema-claro");
-
-    // Atualiza estilo visual do botão
-    if (ativo) {
-      toggle.classList.add("ativo");
-    } else {
-      toggle.classList.remove("ativo");
-    }
   });
-
-  // Estado inicial do botão
-  if (body.classList.contains("tema-escuro")) {
-    toggle.classList.add("ativo");
-  }
-  </script>
+</script>
 </body>
 </html>
