@@ -19,8 +19,8 @@
       <a href="contato.html">Contato</a>
       <a href="planilha.html">Contato</a>
 
-      <!-- Botão de alternância de tema -->
-      <button id="tema-toggle" class="tema-toggle">🌙</button>
+      <!-- Botão Toggle -->
+      <button id="tema-toggle" class="tema-toggle" aria-label="Alternar tema"></button>
     </nav>
   </header>
 
@@ -109,8 +109,19 @@ carregarConteudo();
     body.classList.toggle("tema-escuro");
     const ativo = body.classList.contains("tema-escuro");
     localStorage.setItem("tema", ativo ? "tema-escuro" : "tema-claro");
-    toggle.textContent = ativo ? "☀️" : "🌙"; // alterna ícone
+
+    // Atualiza estilo visual do botão
+    if (ativo) {
+      toggle.classList.add("ativo");
+    } else {
+      toggle.classList.remove("ativo");
+    }
   });
+
+  // Estado inicial do botão
+  if (body.classList.contains("tema-escuro")) {
+    toggle.classList.add("ativo");
+  }
   </script>
 </body>
 </html>
